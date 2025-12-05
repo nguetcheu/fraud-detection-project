@@ -1,24 +1,21 @@
 # Fraud Detection Project
 
-## Overview
-The Fraud Detection Project is designed to identify fraudulent activities in transactional data using machine learning algorithms. This project employs various techniques and models to analyze patterns and detect anomalies.
+## Aperçu
+Le projet de détection des fraudes vise à identifier les activités frauduleuses dans les données transactionnelles grâce à des algorithmes d'apprentissage automatique. Ce projet utilise diverses techniques et modèles pour analyser les tendances et détecter les anomalies.
 
-## Usage Instructions
-1. **Clone the repository:**
-   ```bash
+## Instructions d'utilisation
+1. **Cloner le dépôt :**
+```bash
    git clone https://github.com/nguetcheu/fraud-detection-project.git
    cd fraud-detection-project
    ```
 
-2. **Install dependencies:**
+2. **Installer les dépendances :**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Run the application:**
+3. **Exécutez l'application :**
    ```bash
    python main.py
    ```
-
-## Contributing
-Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
