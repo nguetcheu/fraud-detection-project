@@ -1,6 +1,5 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
 
 def load_dataset(path: str = "data/raw/transaction.csv") -> pd.DataFrame:
   """Charger le dataset brut depuis le dossier data/raw"""
