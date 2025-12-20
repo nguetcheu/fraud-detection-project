@@ -9,16 +9,24 @@ import json
 df = load_dataset("data/raw/transactions.csv")
 df_clean = clean_data(df)
 
-# Split train/test si pas déjà fait
+# Split train/test
 train_df, test_df = train_test_split_data(df_clean)
 save_processed_data(train_df, "data/processed/train.csv")
 save_processed_data(test_df, "data/processed/test.csv")
 
-# Séparer features / target
+# Sélection des features pour le baseline (éviter fuite)
+EXCLUDE_COLS = [
+    "is_fraud",                # target
+    "score_risque_marchand",   # fuite potentielle
+    "nb_tentatives_echouees",  # fuite potentielle
+    "montant_total_24h",       # post-transaction
+    "nb_trans_24h"             # post-transaction
+]
+
 target_col = "is_fraud"
-X_train = train_df.drop(columns=[target_col])
+X_train = train_df.drop(columns=EXCLUDE_COLS)
 y_train = train_df[target_col]
-X_test = test_df.drop(columns=[target_col])
+X_test = test_df.drop(columns=EXCLUDE_COLS)
 y_test = test_df[target_col]
 
 # Entraîner le modèle baseline
@@ -30,7 +38,7 @@ print("Metrics baseline:")
 for k, v in metrics.items():
     print(f"{k}: {v:.4f}")
 
-# Sauvegarder le modèle et les métriques
+# Sauvegarder modèle et métriques
 os.makedirs("results/models", exist_ok=True)
 os.makedirs("results/metrics", exist_ok=True)
 save_model(model, "results/models/baseline.pkl")
